@@ -1,0 +1,30 @@
+<md-card>
+  <md-card-header>
+    <md-card-title>App Shell</md-card-title>
+    <md-card-subtitle>It would be cool to have this UI available offline</md-card-subtitle>
+  </md-card-header>
+  <md-card-actions>
+    <button md-raised-button (click)="loadTimeLine('angular')">Load @angular timeline</button>
+    <button md-raised-button (click)="loadTimeLine('')">Load my timeline</button>
+    <button md-raised-button (click)="loadFavorites('angular')">Load @angular favorites</button>
+    <button md-raised-button (click)="loadFavorites('')">Load my favorites</button>
+  </md-card-actions>
+  <md-card-content>
+
+    <md-nav-list>
+      <md-divider></md-divider>
+      <a md-list-item *ngFor="let tweet of tweets" href="{{ 'https://twitter.com/statuses/' + tweet.id_str }}">
+        <img md-list-avatar [src]="tweet.user.profile_image_url_https" alt="{{tweet.user.name}}">
+        <h3 md-line>{{tweet.user.name}}</h3>
+        <p md-line>
+          <span>{{tweet.text}}</span>
+        </p>
+        <p md-line>
+          <small>{{tweet.created_at}}</small>
+        </p>
+      </a>
+    </md-nav-list>
+
+  </md-card-content>
+
+</md-card>
